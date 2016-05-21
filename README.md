@@ -30,7 +30,7 @@ git clone git@github.com:ericgrysko/cucloud-nodejs.git
 
 # install the modules dependencies
 cd cucloud-nodejs
-npm init
+npm install
 
 # see examples/init-snshook.js
 cd examples

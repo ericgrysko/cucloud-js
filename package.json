@@ -1,7 +1,7 @@
 {
   "name": "cucloud-nodejs",
   "version": "0.1.0",
-  "author": "Eric Grysko <eric@ericgrysko.com>"
+  "author": "Eric Grysko <eric@ericgrysko.com>",
   "description": "Node.js implementation of Cornell Cloud Library Spec. Initially focused on Amazon Web Services.",
   "main": "index.js",
   "scripts": {
