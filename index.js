@@ -3,7 +3,8 @@
 var vogels  = require('vogels'),
     _       = require('lodash'),
     Joi     = require('joi'),
-    merge   = require('merge');
+    merge   = require('merge'),
+    log     = require('npmlog');
 
 var CUCloud = exports;
 
@@ -85,8 +86,8 @@ CUCloud.init = (configOverride) => {
         throw 'Config error: profileName is required';
     }
 
-    console.log('Using profile "' + CUCloud.config.profileName + '"');
-    console.log('Create schema: ' + CUCloud.config.schemaCreate);
+    log.verbose('Using profile "' + CUCloud.config.profileName + '"');
+    log.verbose('Create schema: ' + CUCloud.config.schemaCreate);
 
     // will create tables if requested
     return confirmSchema();

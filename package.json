@@ -1,8 +1,8 @@
 {
-  "name": "cucloud-nodejs",
+  "name": "cucloud",
   "version": "0.1.0",
   "author": "Eric Grysko <eric@ericgrysko.com>",
-  "description": "Node.js implementation of Cornell Cloud Library Spec. Initially focused on Amazon Web Services.",
+  "description": "Node.js implementation of Cornell Cloud Library Spec, initially focused on Amazon Web Services.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,6 +25,7 @@
     "joi": "^8.1.0",
     "lodash": "^4.12.0",
     "merge": "^1.2.0",
+    "npmlog": "^2.0.4",
     "vogels": "^2.2.0"
   }
 }
