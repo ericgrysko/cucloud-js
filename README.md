@@ -1,4 +1,4 @@
-# CUCloud - Node.js
+# CUCloud (Node.js)
 
 <!-- TOC depthFrom:2 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
 
@@ -12,7 +12,8 @@
 <!-- /TOC -->
 ## Overview
 
-Node.js implementation of [Cornell Cloud Library Spec](https://github.com/CU-CloudCollab/Cloud-Library-Spec), initially focused on Amazon Web Services. Intended for use on invoked scripts or deployment in AWS Lambda.
+
+Implementation of the [Cornell Cloud Library Spec](https://github.com/CU-CloudCollab/Cloud-Library-Spec) for JavaScript (Node.js). Intended for use on invoked scripts or deployment in AWS Lambda.
 
 * Requires Node.js v4.3+
 * DynamoDB is used to store configuration.
