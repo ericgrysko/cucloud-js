@@ -1,2 +1,2 @@
 // convenience file
-module.exports = require('./lib/cucloud');
+module.exports = require('./lib/cucloud')
