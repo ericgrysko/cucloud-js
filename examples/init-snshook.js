@@ -2,6 +2,7 @@
 
 var CUCloud = require('../index.js')
 var gitHubHookSns = CUCloud.plugins.gitHubHookSns
+var log = require('npmlog')
 
 // configure our use of CUCloud
 CUCloud.config = {
@@ -32,5 +33,5 @@ var pluginSettings = {
 CUCloud.init({}).then((initResults) => {
   return CUCloud.setPluginSettings(gitHubHookSns.pluginName, pluginSettings)
 }).then(() => {
-  console.log('complete')
+  log.info('Complete')
 })
