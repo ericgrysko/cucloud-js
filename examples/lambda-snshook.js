@@ -17,6 +17,6 @@ exports.handler = (event, context, callback) => {
   }).then((pluginSettings) => {
     return gitHubHookSns.updateAll(pluginSettings)
   }).then((pluginResults) => {
-    callback(null, {complete: true})
+    callback(null, 'complete')
   })
 }
