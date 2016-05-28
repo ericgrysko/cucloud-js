@@ -10,7 +10,7 @@
   "description": "Implementation of the Cornell Cloud Library Spec for JavaScript.",
   "main": "index.js",
   "scripts": {
-    "lint" : "eslint lib/ examples/ *.js",
+    "lint": "eslint lib/ examples/ *.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "git://github.com/ericgrysko/cucloud-nodejs.git",
@@ -32,6 +32,7 @@
     "joi": "^8.1.0",
     "lodash": "^4.12.0",
     "merge": "^1.2.0",
+    "minimist": "^1.2.0",
     "npmlog": "^2.0.4",
     "vogels": "^2.2.0"
   },
