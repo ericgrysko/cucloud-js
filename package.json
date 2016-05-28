@@ -34,7 +34,8 @@
     "merge": "^1.2.0",
     "minimist": "^1.2.0",
     "npmlog": "^2.0.4",
-    "vogels": "^2.2.0"
+    "vogels": "^2.2.0",
+    "yamljs": "^0.2.7"
   },
   "devDependencies": {
     "eslint": "^2.10.2",

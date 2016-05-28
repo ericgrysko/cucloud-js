@@ -1,0 +1,27 @@
+aws.globals:
+  tags:
+    cost_center: CIT
+    tag_name3: valueEF
+    tag_name2: valueCD
+    tag_name1: tag_valueAB
+  region: us-east-1
+  sec_group: sg-87ce2dfe
+  availability_zone: us-east-1e
+plugin.example1:
+  my_int_prop: 12345
+  sub_obj:
+    valueB: b
+    valueA: 1
+  my_bool_prop: false
+plugin.sns-hook:
+  gitHubOrgName: CornellSASIT
+  oAuthToken: token
+  snsHook:
+    events:
+      - push
+    name: amazonsns
+    config:
+      sns_topic: 'arn'
+      aws_secret: 'secret'
+      aws_key: 'key'
+    active: true
