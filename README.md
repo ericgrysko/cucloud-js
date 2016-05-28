@@ -23,7 +23,7 @@ Implementation of the [Cornell Cloud Library Spec](https://github.com/CU-CloudCo
 
 ## Schema
 
-To use the module with any plugins, you'll need the core DynamoDB `cucloud_config` table. The structure of data is defined in [SCHEMA.md](SCHEMA.MD).
+To use the module with any plugins, you'll need the core DynamoDB `cucloud_config` table. The structure of data is defined in [SCHEMA.md](SCHEMA.md).
 
 ## Getting Started
 
@@ -52,10 +52,13 @@ node lib/init-schema.js --profile <set-your-profile-name>
 CUCloud (Node.js) is designed to be used with plugins.
 
 * `CUCloud.plugins.gitHubHookSns` -
+
   ```
   var CUCloud = require('../index.js')
   var gitHubHookSns = CUCloud.plugins.gitHubHookSns
   ```
+
+* `CUCloud.plugins.template` - placeholder
 
 
 ## Examples
