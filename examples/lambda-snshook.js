@@ -1,6 +1,6 @@
 'use strict'
 
-var CUCloud = require('../index.js')
+var CUCloud = require('cucloud')
 var gitHubHookSns = CUCloud.plugins.gitHubHookSns
 
 // configure our use of CUCloud

@@ -1,20 +1,23 @@
 aws.globals:
   tags:
     cost_center: CIT
-    tag_name3: valueEF
-    tag_name2: valueCD
-    tag_name1: tag_valueAB
+    Environment: Dev
   region: us-east-1
   sec_group: sg-87ce2dfe
   availability_zone: us-east-1e
-plugin.example1:
-  my_int_prop: 12345
-  sub_obj:
-    valueB: b
-    valueA: 1
-  my_bool_prop: false
+plugin.cnamer:
+  region: 'us-east-1'
+  instances:
+    -
+      instanceId: i-0123456
+      cname: 'example.org'
+      active: true
+    -
+      instanceId: i-012345a
+      cname: 'app.example.org'
+      active: false
 plugin.sns-hook:
-  gitHubOrgName: CornellSASIT
+  gitHubOrgName: OrgName
   oAuthToken: token
   snsHook:
     events:

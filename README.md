@@ -2,98 +2,103 @@
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-<!-- TOC depthFrom:2 depthTo:3 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC depthFrom:2 depthTo:4 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Overview](#overview)
-- [Schema](#schema)
 - [Getting Started](#getting-started)
+	- [Install](#install)
+	- [AWS Credentials](#aws-credentials)
+	- [Initialize Schema](#initialize-schema)
+	- [Export Schema](#export-schema)
 - [Plugins](#plugins)
 - [Examples](#examples)
-	- [lambda-snshook.js](#lambda-snshookjs)
 - [Future](#future)
 
 <!-- /TOC -->
-
 ## Overview
 
-Implementation of the [Cornell Cloud Library Spec](https://github.com/CU-CloudCollab/Cloud-Library-Spec) for JavaScript (Node.js). For use with invoked scripts or deployment in AWS Lambda.
+CUCloud (Node.js) is an implementation of the [Cornell Cloud Library Spec](https://github.com/CU-CloudCollab/Cloud-Library-Spec). It is designed for use with invoked scripts or deployment in AWS Lambda.
 
 * Requires Node.js v4.3+
-* AWS DynamoDB is used to store configuration.
-* Plugin based model.
-
-## Schema
-
-To use the module with any plugins, you'll need the core DynamoDB `cucloud_config` table. The structure of data is defined in [SCHEMA.md](SCHEMA.md).
-
+* Uses AWS DynamoDB to store configuration.
+* Extensible plugin based model.
 
 ## Getting Started
 
-Initialize the DynamoDB schema using the schema defined in `examples/schema.yml`
+CUCloud (Node.js) uses the [AWS SDK for JavaScript](https://www.npmjs.com/package/aws-sdk) and stores configuration in a DynamoDB table named `cucloud_config`. Before using the module with any plugins, you'll need to initialize the schema. For details about the schema, see [SCHEMA.md](doc/SCHEMA.md).
+
+### Install
+
+CUCloud (Node.js) is not available via [npm](https://www.npmjs.com/), but you can install it locally for yourself.
 
 ```bash
-# nodejs aws-sdk will use credentials, required to adjust dynamodb
-
-# fork the repository
+# fork, then clone the repository from your account
 git clone git@github.com:<YOURUSERNAME>/cucloud-js.git
 
 # install the modules dependencies
 cd cucloud-js
 npm install
 
-# Option 1: Use environmental variable
-export CUCLOUD_PROFILE=<set-your-profile-name>
-node lib/schema-import.js --schema examples/schema.yml
-
-# Option 2: set the profile name at run time
-node lib/schema-import.js --profile <set-your-profile-name> --schema examples/schema.yml
+# install the module globally for yourself
+npm install . -g
+npm link
 ```
 
-If at any point you would like to export your schema you can:
+### AWS Credentials
+
+Review [Setting AWS Credentials](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html#Setting_AWS_Credentials) before initializing the schema. When invoking the module, you will need access to DynamoDB be via your IAM user or a role.
+
+*Broad IAM policy:*
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+### Initialize Schema
+
+Initialize the DynamoDB schema using the model defined in `examples/schema.yml`
 
 ```bash
-node lib/schema-export.js --profile <set-your-profile-name> --out examples/prod-schema-export.yml
+# use environmental variable or set the profile at runtime
+export CUCLOUD_PROFILE=<profile-name>
+
+# import the schema
+cucloud-js-schema import examples/schema.yml [--profile <profile-name> ]
+```
+
+### Export Schema
+
+If at any point you would like to export your schema you can dump the configuration in YAML format. You can later import this export as needed.
+
+```bash
+# use environmental variable CUCLOUD_PROFILE= or set the profile at runtime
+cucloud-js-schema export examples/prod-schema-export.yml [--profile <profile-name> ]
 ```
 
 ## Plugins
 
 CUCloud (Node.js) is designed to be used with plugins.
 
+* `CUCloud.plugins.cnamer` -
 * `CUCloud.plugins.gitHubHookSns` -
-
-  ```
-  var CUCloud = require('../index.js')
-  var gitHubHookSns = CUCloud.plugins.gitHubHookSns
-  ```
-
-* `CUCloud.plugins.template` - placeholder
-
 
 ## Examples
 
-### lambda-snshook.js
+Implementations of the plugins are included in `examples/`. Documentation is included in `doc/`.
 
-AWS Lambda function using `CUCloud.plugins.gitHubHookSns` to maintain "Amazon SNS" service hook on all repositories for a GitHub organization.
+* `examples/lambda-cnamer.js` - An AWS Lambda function to update a Route53 CNAME record with the public DNS of an EC2 instance when it enters a RUNNING state. For more detail see [LAMBDA-CNAMER.md](doc/LAMBDA-CNAMER.md).
+* `examples/lambda-snshook.js` - AWS Lambda function to maintain the "Amazon SNS" service hook on all repositories for a GitHub organization. For more detail see [LAMBDA-SNSHOOK.md](doc/LAMBDA-SNSHOOK.md).
 
-*Features*
-* Rotates AWS keys on your hook when your configured access key changes.
-
-*Required*
-* oAuth Token
-* SNS topic ARN
-* IAM user access and secret key
-
-#### Usage
-
-```bash
-# see examples/init-snshook.js
-cd examples
-
-# copy then edit prod-init-snshook.js for your use
-cp init-snshook.js prod-init-snshook.js
-
-node prod-init-snshook.js
-```
 ---
 
 ## Future
