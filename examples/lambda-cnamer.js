@@ -1,6 +1,6 @@
 'use strict'
 
-var CUCloud = require('..')
+var CUCloud = require('cucloud')
 var cnamer = CUCloud.plugins.cnamer
 
 // configure our use of CUCloud
