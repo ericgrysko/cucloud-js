@@ -20,7 +20,7 @@ An AWS Lambda function to update a Route53 `CNAME` record with the public DNS of
 
 0. IAM: Attach the policy to the role
    ```bash
-   aws iam attach-role-policy --role-name lambda-cname-role --policy-arn <enter policy arn here>
+   aws iam attach-role-policy --role-name lambda-cnamer-role --policy-arn <enter policy arn here>
    ```
 
 ## 3. Prepare ZIP with Lambda function
