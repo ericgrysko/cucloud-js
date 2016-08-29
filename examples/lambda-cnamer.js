@@ -18,7 +18,11 @@ exports.handler = (event, context, callback) => {
     context.fail(reason)
   }).then((pluginSettings) => {
     // pull the instance information out of the event
-    var instanceId = event.detail['instance-id']
+    var instanceId = ''
+    instanceId = event.detail['instance-id']
+    if (typeof instanceId === 'undefined' || instanceId === '') {
+      instanceId = event.detail.EC2InstanceId
+    }
 
     return cnamer.updateCname(pluginSettings, instanceId)
   }, (reason) => {

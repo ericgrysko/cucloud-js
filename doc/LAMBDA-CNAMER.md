@@ -66,6 +66,8 @@ Using the AWS Console:
 
 Using the AWS Console:
 
+*Note: If you have instances launching via an ASG, use the Auto Scaling EC2 Instance Launch Successful rule*
+
 0. Select CloudWatch -> Rules -> Create rule
 0. Event selector -> Select Event Source -> `EC2 instance state change notification`
 0. Specific state(s): `Running`
@@ -97,6 +99,8 @@ You can then import just this portion of the schema.
 ```bash
 cucloud-js-schema import <your-filename.yml> [--profile <set-your-profile-name>]
 ```
+
+If your instanceId is not fixed due to an ASG, attach a tag with Name=CNAME and value with your cname.
 
 If you need to modify, you can reimport or use the AWS Console to add an entry
 
